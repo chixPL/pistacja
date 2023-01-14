@@ -2,6 +2,7 @@
 
 body{
     margin-left: 0.25rem !important;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .primarycolor{
@@ -9,6 +10,7 @@ body{
 }
 
 h1::first-letter{
+    font-weight: 700;
     color: #B20D3B;
 }
 
@@ -21,12 +23,15 @@ h2{
     color: #FF457A;
 }
 
-.superscript{
-    display: inline;
-    vertical-align: super;
-    font-size: 13px;
+.unit{
+    font-size: 16px;
+    color: black;
 }
 
-.font{
-    font-family: 'Noto Sans', sans-serif;
+.superscript{
+    vertical-align: super;
+}
+
+b{
+    font-weight: 700;
 }
