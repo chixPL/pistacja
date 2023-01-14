@@ -1,18 +1,12 @@
-<?php
-include('.db/sqlconnect.php');
-$sql = "SELECT wind_speed_kmh, rain_count, ROUND(((temperature_1 + temperature_2) /2),2) AS temperature, ROUND(pressure, 0) AS pressure, humidity, wind_gust_kmh FROM results WHERE id_measure = 2";
-$query = mysqli_query($conn, $sql);
-$rs= mysqli_fetch_array($query);
-
-?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Biblioteki i czcionki zewnętrzne -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -46,31 +40,31 @@ $rs= mysqli_fetch_array($query);
         <!-- Wyniki z DB -->
         <div class="container ms-1">
         <h1>Temperatura:
-        <h2><b><?php echo $rs['temperature']?><span class="unit superscript"> °C</span></b></h2>
+        <h2><b><span id="temperature-value"></span><span class="unit superscript"> °C</span></b></h2>
         </div>
         <br>
 
         <div class="container ms-1">
         <h1>Wiatr:
-        <h2><b><?php echo $rs['wind_speed_kmh'];?><span class="unit"> km/h</span></b></h2>
+        <h2><b><span id="wind-value"></span><span class="unit"> km/h</span></b></h2>
         </div>
         <br>
 
         <div class="container ms-1">
         <h1>Ciśnienie:
-        <h2><b><?php echo $rs['pressure'];?><span class="unit"> hPa</span></b></h2>
+        <h2><b><span id="pressure-value"></span><span class="unit"> hPa</span></b></h2>
         </div>
         <br>
 
         <div class="container ms-1">
         <h1>Deszcz:
-        <h2><b><?php echo $rs['rain_count'];?><span class="unit"> mm</span></b></h2>
+        <h2><b><span id="rain-value"></span><span class="unit"> mm</span></b></h2>
         </div>
         <br>
 
         <div class="container ms-1">
         <h1>Wilgotność:
-        <h2><b><?php echo $rs['humidity'];?><span class="unit"> %</span></b></h2>
+        <h2><b><span id="humidity-value"></span><span class="unit"> %</span></b></h2>
         </div>
         <br>
 
