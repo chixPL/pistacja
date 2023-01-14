@@ -20,11 +20,11 @@ $rs= mysqli_fetch_array($query);
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light" style="background-color:#B20D3B;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="data/images/pistacja-logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                Pistacja
+                <b><span class="primarycolor">Pi</b></span>stacja
               </a>          
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -77,6 +77,8 @@ $rs= mysqli_fetch_array($query);
       </div>
 
       <p id="changeText"></p>
+      <div class="progress" style="width: 25%;">
+        <div id="resetprogress" class="progress-bar bg-danger" role="progressbar" aria-label="Basic example" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
       <script src="script.js"></script>
 </body>
 </html>
