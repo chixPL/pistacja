@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+body{
+    margin-left: 0.25rem !important;
+}
+
+.primarycolor{
+    color: #B20D3B;
+}
+
+h1::first-letter{
+    color: #B20D3B;
+}
+
+h2{
+    color: #B20D3B;
+    display: block;
+}
+
+.secondarycolor{
+    color: #FF457A;
+}
+
+.superscript{
+    display: inline;
+    vertical-align: super;
+    font-size: 13px;
+}
+
+.font{
+    font-family: 'Noto Sans', sans-serif;
+}
