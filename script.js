@@ -8,11 +8,8 @@ let previous_data = {'temperature': 0, 'wind_speed_kmh': 0, 'pressure': 0, 'rain
 class EventLoop{
 
   constructor(){
-    let counter = 0; // odświeżanie co 5 sekund, zaczynamy od 5 żeby uruchomiło się na starcie
-    let number = 2; // testowo: pętla od 2 do 5 pomiaru
-
-    this.counter = counter;
-    this.number = number;
+    this.counter = 0;
+    this.number = 2;
   }
 
   change =()=>{
@@ -26,6 +23,7 @@ class EventLoop{
     if(this.number > 5){
       this.number = 2;
     }
+    const $this = this;
 
     $.ajax({
       url: ".db/sqlconnect.php",
@@ -46,7 +44,7 @@ class EventLoop{
         countHumidity.start();
         
         previous_data = data;
-        this.number++;
+        $this.number++;
 
     }})};
 
