@@ -1,31 +1,36 @@
 import { CountUp } from './data/js/countUp.min.js';
 
-let counter = 5; // odświeżanie co 5 sekund, zaczynamy od 5 żeby uruchomiło się na starcie
-let number = 2; // testowo: pętla od 2 do 5 pomiaru
 const text = document.getElementById("changeText");
 const progressbar = document.getElementById("resetprogress")
-const loop = setInterval(eventLoop, 1000);
 
 let previous_data = {'temperature': 0, 'wind_speed_kmh': 0, 'pressure': 0, 'rain_count': 0, 'humidity' : 0}; // dla counterów
 
-function eventLoop(){
+class EventLoop{
 
-  function change() {
-    text.innerHTML = "Odświeżenie za " + (5-counter) + " sekund";
-    progressbar.style = "width: " + counter*20 + "%";
-    progressbar.ariaValueNow = counter*20;
-  };
+  constructor(){
+    let counter = 0; // odświeżanie co 5 sekund, zaczynamy od 5 żeby uruchomiło się na starcie
+    let number = 2; // testowo: pętla od 2 do 5 pomiaru
 
-  function requestData(){
+    this.counter = counter;
+    this.number = number;
+  }
 
-    if(number > 5){
-      number = 2;
+  change =()=>{
+    text.innerHTML = "Odświeżenie za <span class='primarycolor'><b><u>" + (5-this.counter) + "</b></u></span> sekund";
+    progressbar.style = "width: " + this.counter*20 + "%";
+    progressbar.ariaValueNow = this.counter*20;
+  }
+
+  requestData =()=>{
+
+    if(this.number > 5){
+      this.number = 2;
     }
 
     $.ajax({
       url: ".db/sqlconnect.php",
       type: 'POST',
-      data: {"num": number},
+      data: {"num": this.number},
       dataType:"json",
       success: function(data) {
         let countTemp = new CountUp('temperature-value', data['temperature'], {startVal: previous_data['temperature'], decimalPlaces: 2, duration: 2});
@@ -41,15 +46,21 @@ function eventLoop(){
         countHumidity.start();
         
         previous_data = data;
-        number++;
+        this.number++;
 
     }})};
 
-    if(counter > 5){
-      requestData();
-      counter = 0;
+  main_loop =()=>{
+    if(this.counter > 5){
+      this.requestData();
+      this.counter = 0;
     }
-    change();
-    counter++;
+    this.change();
+    this.counter++;
+  }
 
 }
+
+let el = new EventLoop();
+el.requestData();
+const loop = setInterval(el.main_loop, 1000);
