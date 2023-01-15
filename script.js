@@ -2,9 +2,9 @@ import { CountUp } from './data/js/countUp.min.js';
 
 let counter = 5; // odświeżanie co 5 sekund, zaczynamy od 5 żeby uruchomiło się na starcie
 let number = 2; // testowo: pętla od 2 do 5 pomiaru
-let text = document.getElementById("changeText");
-let progressbar = document.getElementById("resetprogress")
-let loop = setInterval(eventLoop, 1000);
+const text = document.getElementById("changeText");
+const progressbar = document.getElementById("resetprogress")
+const loop = setInterval(eventLoop, 1000);
 
 let previous_data = {'temperature': 0, 'wind_speed_kmh': 0, 'pressure': 0, 'rain_count': 0, 'humidity' : 0}; // dla counterów
 
@@ -53,9 +53,3 @@ function eventLoop(){
     counter++;
 
 }
-
-/*
-setTimeout(function(){
-    window.location.reload(1);
- }, 5000);
-*/

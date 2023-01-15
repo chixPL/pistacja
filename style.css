@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
 body{
-    margin-left: 0.25rem !important;
     font-family: 'Noto Sans', sans-serif;
 }
 
@@ -16,7 +15,6 @@ h1::first-letter{
 
 h2{
     color: #B20D3B;
-    display: block;
 }
 
 .secondarycolor{
