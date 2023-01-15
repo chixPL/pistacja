@@ -11,14 +11,14 @@ let previous_data = {'temperature': 0, 'wind_speed_kmh': 0, 'pressure': 0, 'rain
 function eventLoop(){
 
   function change() {
-    text.innerHTML = "Restart za " + (5-counter) + " sekund";
+    text.innerHTML = "Odświeżenie za " + (5-counter) + " sekund";
     progressbar.style = "width: " + counter*20 + "%";
     progressbar.ariaValueNow = counter*20;
   };
 
   function requestData(){
 
-    if(number == 5){
+    if(number > 5){
       number = 2;
     }
 
@@ -45,7 +45,7 @@ function eventLoop(){
 
     }})};
 
-    if(counter == 5){
+    if(counter > 5){
       requestData();
       counter = 0;
     }
