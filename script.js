@@ -62,13 +62,18 @@ class EventLoop{
 
 const ctx = document.getElementById('myChart');
 
+// Testowa funkcja, wkrótce implementacja z DB + PHP
+let rnd_data = Array.from({length: 6}, () => Math.ceil(Math.random() * 6)); // randomowa temperatura, inna przy każdym odświeżeniu :p
+console.log(rnd_data);
+
 new Chart(ctx, {
   type: 'bar',
   data: {
     labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: 'Temperatura (°C)',
+      data: rnd_data,
+      backgroundColor: '#FF6384',
       borderWidth: 1
     }]
   },
