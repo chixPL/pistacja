@@ -1,4 +1,5 @@
 import { CountUp } from './data/js/countUp.min.js';
+import 'https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js';
 
 const text = document.getElementById("changeText");
 const progressbar = document.getElementById("resetprogress")
@@ -58,6 +59,27 @@ class EventLoop{
   }
 
 }
+
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
 
 let el = new EventLoop();
 el.requestData();
