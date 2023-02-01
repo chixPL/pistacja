@@ -33,3 +33,9 @@ h2{
 b{
     font-weight: 700;
 }
+
+@media (max-width: 500px) { 
+    .progress{
+        width:100% !important;
+    }
+}
