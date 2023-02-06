@@ -60,18 +60,21 @@ class EventLoop{
 
 }
 
-const ctx = document.getElementById('myChart');
 
 // Testowa funkcja, wkrótce implementacja z DB + PHP
-let rnd_data = Array.from({length: 6}, () => Math.ceil(Math.random() * 30)); // randomowa temperatura, inna przy każdym odświeżeniu :p
+let rnd_temp = Array.from({length: 7}, () => Math.ceil(Math.random() * 30)); // randomowa temperatura, inna przy każdym odświeżeniu :p
+let rnd_wind = Array.from({length: 7}, () => (Math.random() * (6 - 0) + 0).toFixed(2)); // randomowa prędkość wiatru, inna przy każdym odświeżeniu :p
 
-new Chart(ctx, {
+const ctx_temp = document.getElementById('temp-chart');
+const ctx_wind = document.getElementById('wind-chart');
+
+new Chart(ctx_temp, {
   type: 'bar',
   data: {
-    labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'],
+    labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
     datasets: [{
       label: 'Temperatura (°C)',
-      data: rnd_data,
+      data: rnd_temp,
       backgroundColor: '#FF6384',
       borderWidth: 1
     }]
@@ -84,6 +87,28 @@ new Chart(ctx, {
     },
   }
 });
+
+
+new Chart(ctx_wind, {
+  type: 'bar',
+  data: {
+    labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
+    datasets: [{
+      label: 'Prędkość wiatru (km/h)',
+      data: rnd_wind,
+      backgroundColor: '#FF6384',
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    },
+  }
+});
+
 
 let el = new EventLoop();
 el.requestData();

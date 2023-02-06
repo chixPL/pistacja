@@ -37,12 +37,12 @@
         </div>
       </nav>
 
-      <div class="container-lg ms-0 mt-0">
+      <div class="container-fluid mx-0 mt-0">
         <!-- Główny kontener-->
 
         <div class="row align-items-start">
 
-        <div class="col ms-1 mt-1">
+          <div class="col ms-1 mt-1">
               <!-- Wyniki z DB -->
               <div class="row">
                 <h1>Temperatura:
@@ -74,14 +74,35 @@
               </div>
             </div>
 
-            <div class="col-lg">
+            <div class="col-lg-6">
             <!-- Wykresy -->
             <div class="row">
-              <canvas id="myChart"></canvas>
+              <canvas id="temp-chart"></canvas>
             </div>
             <br>
-
+            <div class="row">
+              <canvas id="wind-chart"></canvas>
             </div>
+            <br>
+            </div>
+
+            <div class="col-lg">
+                <h1 class="address"><b><span class="primarycolor">Pi</b></span>stacja znajduje się:</h1>
+                <br>
+                <div class="google-maps">
+                <iframe
+                  width="500"
+                  height="300"
+                  style="border:0"
+                  loading="lazy"
+                  allowfullscreen
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDljNEQdZYfa8OCeByHw9WfFmKWOaJIOKE
+                    &q=place_id:ChIJQx8Hthk3AkcRYkHRYb5mGPY">
+                </iframe>
+              </div>
+            </div>
+
         </div>
       </div>
       

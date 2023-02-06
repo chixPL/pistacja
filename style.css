@@ -34,12 +34,36 @@ b{
     font-weight: 700;
 }
 
+.address{
+    text-align: center;
+}
+
+.google-maps {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden;
+}
+.google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* Komputer */
 @media (max-width: 992px) { 
     .progress{
         width:100% !important;
     }
     
     .mb-underlg-2{
-        margin-bottom: 1rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .address{
+        text-align: left;
     }
 }
