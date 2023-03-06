@@ -1,10 +1,14 @@
-import { CountUp } from '../lib/countup/countUp.min.js';
-import '../lib/chartjs/chart.umd.min.js';
+import { CountUp } from './countUp.min.js';
+import 'https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js';
 
 const text = document.getElementById("changeText");
 const progressbar = document.getElementById("resetprogress")
 
 let previous_data = {'temperature': 0, 'wind_speed_kmh': 0, 'pressure': 0, 'rain_count': 0, 'humidity' : 0}; // dla counterów
+
+function get_range(x, min, max) {
+  return x >= min && x <= max;
+}
 
 class EventLoop{
 
@@ -47,7 +51,53 @@ class EventLoop{
         previous_data = data;
         $this.number++;
 
-    }})};
+        // Testowa funkcja, wkrótce implementacja z DB + PHP
+        
+        /*
+        340-0 + 1-20: N
+        21-60: NE
+        61-110: E
+        111-160: SE
+        161-200: S
+        201-250: SW
+        251-290: W
+        291-340: NW
+        */
+
+        let wind_dir = Math.random() * 337.5;
+        let dir_text = 'N';
+        if (get_range(wind_dir, 1, 20)){
+          dir_text = 'N';
+        }
+        if (get_range(wind_dir, 21, 60)){
+          dir_text = 'NE';
+        }
+        if (get_range(wind_dir, 61, 110)){
+          dir_text = 'E';
+        }
+        if (get_range(wind_dir, 111, 160)){
+          dir_text = 'SE';
+        }
+        if (get_range(wind_dir, 161, 200)){
+          dir_text = 'S';
+        }
+        if (get_range(wind_dir, 201, 250)){
+          dir_text = 'SW';
+        }
+        if (get_range(wind_dir, 251, 290)){
+          dir_text = 'W';
+        }
+        if (get_range(wind_dir, 291, 340)){
+          dir_text = 'NW';
+        }
+
+        compass.style.transform = 'rotate(' + wind_dir.toFixed(0) + 'deg)'
+        document.getElementById('direction').innerHTML = '<b>' + dir_text + '</b>';
+    
+
+    }})
+  
+  };
 
   main_loop =()=>{
     if(this.counter > 5){
@@ -60,65 +110,57 @@ class EventLoop{
 
 }
 
-  function start(){
 
-  // Testowa funkcja, wkrótce implementacja z DB + PHP
-  let rnd_temp = Array.from({length: 7}, () => Math.ceil(Math.random() * 30)); // randomowa temperatura, inna przy każdym odświeżeniu :p
-  let rnd_wind = Array.from({length: 7}, () => (Math.random() * (6 - 0) + 0).toFixed(2)); // randomowa prędkość wiatru, inna przy każdym odświeżeniu :p
+// Testowa funkcja, wkrótce implementacja z DB + PHP
+let rnd_temp = Array.from({length: 7}, () => Math.ceil(Math.random() * 30)); // randomowa temperatura, inna przy każdym odświeżeniu :p
+let rnd_wind = Array.from({length: 7}, () => (Math.random() * (6 - 0) + 0).toFixed(2)); // randomowa prędkość wiatru, inna przy każdym odświeżeniu :p
 
-  const ctx_temp = document.getElementById('temp-chart');
-  const ctx_wind = document.getElementById('wind-chart');
+const ctx_temp = document.getElementById('temp-chart');
+const ctx_wind = document.getElementById('wind-chart');
 
-  new Chart(ctx_temp, {
-    type: 'bar',
-    data: {
-      labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
-      datasets: [{
-        label: 'Temperatura (°C)',
-        data: rnd_temp,
-        backgroundColor: '#FF6384',
-        borderWidth: 1
-      }]
+new Chart(ctx_temp, {
+  type: 'bar',
+  data: {
+    labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
+    datasets: [{
+      label: 'Temperatura (°C)',
+      data: rnd_temp,
+      backgroundColor: '#B20D3B',
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
     },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      },
-      maintainAspectRatio: false
-    }
-  });
+  }
+});
 
 
-  new Chart(ctx_wind, {
-    type: 'bar',
-    data: {
-      labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
-      datasets: [{
-        label: 'Prędkość wiatru (km/h)',
-        data: rnd_wind,
-        backgroundColor: '#FF6384',
-        borderWidth: 1
-      }]
+new Chart(ctx_wind, {
+  type: 'bar',
+  data: {
+    labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
+    datasets: [{
+      label: 'Prędkość wiatru (km/h)',
+      data: rnd_wind,
+      backgroundColor: '#B20D3B',
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
     },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      },
-      maintainAspectRatio: false
-    }
-  });
+  }
+});
 
-
+window.onload = (event) => {
   let el = new EventLoop();
   el.requestData();
   const loop = setInterval(el.main_loop, 1000);
-
-}
-
-window.onload = (event) => {
-  start();
 };

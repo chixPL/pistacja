@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Biblioteki i czcionki zewnętrzne -->
+  <link href="data/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <script src="data/lib/bootstrap/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+  <script src="data/lib/jquery/jquery.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- Własne css i js -->
+  <link rel="stylesheet" href="style.css">
+  <script src="data/js/stats.js" type="module"></script>
+  <title>Pistacja</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light" style="background-color:#B20D3B;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="data/images/pistacja-logo.svg" alt="Logo" width="32" height="32"
+              class="d-inline-block align-text-top">
+            <b><span class="primarycolor">Pi</b></span>stacja
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Strona główna</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="stats.html">Statystyki</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://github.com/chixPL/pistacja">GitHub</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+    <div id="main" class="container-fluid">
+        <!-- Główny kontener-->
+        <div class="row">
+        <div class="col-lg-8">
+            <div class="row">
+                <h1>Miesięczne wyniki</h1>
+            </div>
+            <br>
+            <div class="row row-cols-2">
+            <div class="col-lg-6">
+                <div class="row">
+                <div class="chart-container" style="position: relative">
+                <canvas id="chart1"></canvas>
+                <canvas id="chart3"></canvas>
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                <div class="chart-container" style="position: relative">
+                <canvas id="chart2"></canvas>
+                <canvas id="chart4"></canvas>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="col-lg">
+            <div class="row">
+            <h1>Uptime:</h1>
+            </div>
+            <div class="row">
+            <span id="uptime"></span>
+            </div>
+            <div class="row">
+                <img id="fetch" src="data/images/fetch.png">
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>
