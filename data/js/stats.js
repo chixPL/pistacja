@@ -19,7 +19,7 @@ function load(){
     const ctx4 = document.getElementById('chart4');
     
 
-    new Chart(ctx1, {
+    const chart1 = new Chart(ctx1, {
     type: 'bar',
     data: {
         labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
@@ -39,7 +39,7 @@ function load(){
     }
     });
 
-    new Chart(ctx2, {
+    const chart2 = new Chart(ctx2, {
         type: 'bar',
         data: {
             labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
@@ -58,7 +58,7 @@ function load(){
             },
         }
         });
-    new Chart(ctx3, {
+    const chart3 = new Chart(ctx3, {
         type: 'bar',
         data: {
             labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
@@ -75,10 +75,10 @@ function load(){
                 beginAtZero: true
             }
             },
-        }
-        });
+    }
+    });
 
-    new Chart(ctx4, {
+    const chart4 = new Chart(ctx4, {
         type: 'bar',
         data: {
             labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
@@ -98,8 +98,39 @@ function load(){
         }
         });
 
+
+    function viewBar(){
+
+        // for(let i=1; i<5; i++){
+        //     let current = eval('chart' + i);
+        //     current.type = 'bar';
+        //     current.update();
+        // }
+    
+        document.getElementById("bar_chart").classList.add('btn-primary');
+        document.getElementById("bar_chart").classList.remove('btn-secondary');
+        document.getElementById("line_chart").classList.add('btn-secondary');
         
-}
+    };
+    
+    function viewLine(){
+    
+        // for(let i=1; i<5; i++){
+        //     let current = eval('chart' + i);
+        //     current.type = 'line';
+        //     current.update();
+        // }
+    
+        document.getElementById("line_chart").classList.add('btn-primary');
+        document.getElementById("line_chart").classList.remove('btn-secondary');
+        document.getElementById("bar_chart").classList.add('btn-secondary');
+        
+    };
+
+    document.getElementById ("bar_chart").addEventListener ("click", viewBar, false);
+    document.getElementById ("line_chart").addEventListener ("click", viewLine, false);
+    
+};
 
 window.onload = (event) => {
     load();

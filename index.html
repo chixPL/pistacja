@@ -22,7 +22,7 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light" style="background-color:#B20D3B;">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="data/images/pistacja-logo.png" alt="Logo" width="30" height="24"
+        <img src="data/images/pistacja-logo.svg" alt="Logo" width="32" height="32"
           class="d-inline-block align-text-top">
         <b><span class="primarycolor">Pi</b></span>stacja
       </a>
@@ -33,7 +33,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Strona główna</a>
+            <a class="nav-link active" aria-current="page" href="index.html">Strona główna</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="stats.html">Statystyki</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://github.com/chixPL/pistacja">GitHub</a>
@@ -54,10 +57,22 @@
         </div>
         <br>
 
-        <div class="row">
-          <h1>Wiatr:
-            <h2><b><span id="wind-value"></span><span class="unit"> km/h</span></b></h2>
-        </div>
+        <div class="row row-cols-2">
+          <div class="col">
+            <h1>Wiatr:
+              <h2><b><span id="wind-value"></span><span class="unit"> km/h</span></b></h2>
+            </div>
+
+
+            <div class="col-auto">
+              <div class="row align-items-start">
+                  <img id="compass" class="float-start" src="data/images/kompas.svg" style="width: 64px !important;height:64px !important;">
+              </div>
+              <div class="row mb-0">
+                <p id="direction" class="text-center"></p>
+              </div>
+              </div>
+          </div>
         <br>
 
         <div class="row">
@@ -102,14 +117,20 @@
       </div>
 
       <div class="col-lg">
-        <h1 class="address"><b><span class="primarycolor">Pi</b></span>stacja znajduje się:</h1>
-        <br>
-        <div class="google-maps">
-          <iframe width="500" height="300" style="border:0" loading="lazy" allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDljNEQdZYfa8OCeByHw9WfFmKWOaJIOKE
-                    &q=place_id:ChIJQx8Hthk3AkcRYkHRYb5mGPY">
-          </iframe>
+        <div class="row">
+          <h1 class="address"><b><span class="primarycolor">Pi</b></span>stacja znajduje się:</h1>
+          <br>
+          <div class="google-maps">
+            <iframe width="500" height="300" style="border:0" loading="lazy" allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDljNEQdZYfa8OCeByHw9WfFmKWOaJIOKE
+                      &q=place_id:ChIJQx8Hthk3AkcRYkHRYb5mGPY">
+            </iframe>
+          </div>
         </div>
+        <div class="row align-self-end">
+          <p class="text-end mb-0"><span class="primarycolor"><i>made by</i></span></p>
+          <p class="text-end"><b>Anna Fiń</b> & <b>Jakub Rutkowski</b></p>
+        </div>    
       </div>
 
     </div>
