@@ -87,7 +87,9 @@ function load(){
             data: getRandomData(),
             backgroundColor: '#25DB3C',
             borderWidth: 1
-            }]
+            },
+        
+        ]
         },
         options: {
             scales: {
@@ -101,11 +103,11 @@ function load(){
 
     function viewBar(){
 
-        // for(let i=1; i<5; i++){
-        //     let current = eval('chart' + i);
-        //     current.type = 'bar';
-        //     current.update();
-        // }
+        for(let i=1; i<5; i++){
+            let current_chart = eval('chart'+i);
+            current_chart.config.type = "bar";
+            current_chart.update();
+        }
     
         document.getElementById("bar_chart").classList.add('btn-primary');
         document.getElementById("bar_chart").classList.remove('btn-secondary');
@@ -114,12 +116,13 @@ function load(){
     };
     
     function viewLine(){
+
+        for(let i=1; i<5; i++){
+            let current_chart = eval('chart'+i);
+            current_chart.config.type = "line";
+            current_chart.update();
+        }
     
-        // for(let i=1; i<5; i++){
-        //     let current = eval('chart' + i);
-        //     current.type = 'line';
-        //     current.update();
-        // }
     
         document.getElementById("line_chart").classList.add('btn-primary');
         document.getElementById("line_chart").classList.remove('btn-secondary');
