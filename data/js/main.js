@@ -91,6 +91,13 @@ class EventLoop{
           dir_text = 'NW';
         }
 
+        if(dir_text.length > 1){ // jeśli długość tekstu jest większa niż 1 znak, to przesuń w lewo żeby nadal był na środku
+          document.getElementById('direction').style['margin-left'] = '-5px';
+        }
+        else {
+          document.getElementById('direction').style['margin-left'] = '0px';
+        }
+
         compass.style.transform = 'rotate(' + wind_dir.toFixed(0) + 'deg)'
         document.getElementById('direction').innerHTML = '<b>' + dir_text + '</b>';
     
