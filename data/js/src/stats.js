@@ -1,4 +1,4 @@
-import 'https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js';
+import '../../lib/chartjs/chart.umd.min.js';
 
 function load(){
 

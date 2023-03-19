@@ -1,5 +1,5 @@
 import { CountUp } from '../../lib/countup/countUp.min.js';
-import 'https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js';
+import '../../lib/chartjs/chart.umd.min.js';
 
 const text = document.getElementById("changeText");
 const progressbar = document.getElementById("resetprogress")

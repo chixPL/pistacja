@@ -52,7 +52,20 @@ b{
     height: 100% !important;
 }
 
-/* Komputer */
+.fetch{
+    background-color: #0c0c0c;
+    color: #cccccc;
+}
+
+/* Tylko na komputerze */
+@media (min-width: 992px) { 
+    .fetch{
+        border-radius: 50px;
+        border-color: gray;
+    }
+}
+
+/* Tylko na telefonie */
 @media (max-width: 992px) { 
     .progress{
         width:100% !important;

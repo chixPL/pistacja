@@ -35,7 +35,7 @@
                 <a class="nav-link" aria-current="page" href="index.html">Strona główna</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="stats.html">Statystyki</a>
+                <a class="nav-link active" aria-current="page" href="stats.php">Statystyki</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="https://github.com/chixPL/pistacja">GitHub</a>
@@ -90,7 +90,18 @@
             <span id="uptime"></span>
             </div>
             <div class="row">
-                <img id="fetch" src="data/images/fetch.png">
+              <pre class="fetch font-monospace me-1">
+              <?php
+                if(strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile') || strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'android')) { // sprawdzamy czy użytkownik korzysta z telefonu
+                  echo file_get_contents('.db/fetch_noart.txt'); // wersja bez grafiki
+                  // todo: dodać ansi2html i prawdziwy exec neofetch
+                } else {
+                  // exec('neofetch > .db/fetch.txt'); mamy problem: nie mogę tego wgrać na serwer, trzeba będzie to w jakiś sposób pobierać z pistacji
+                  echo file_get_contents('.db/fetch.txt'); // pełna wersja
+                }
+                
+              ?>
+              </pre>
             </div>
         </div>
     </div>
