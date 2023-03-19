@@ -29,6 +29,19 @@ function config(title, chartData){
 }
 }
 
+async function getSqlResults(url = "", num = 0) {
+  var formData = new FormData();
+  formData.append('num', num);  
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: "num=" + num
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
 class EventLoop{
 
   constructor(){
@@ -42,86 +55,81 @@ class EventLoop{
     progressbar.ariaValueNow = this.counter*20;
   }
 
+  update = (data)=>{
+    let countTemp = new CountUp('temperature-value', data['temperature'], {startVal: previous_data['temperature'], decimalPlaces: 2, duration: 2});
+    let countWind = new CountUp('wind-value', data['wind_speed_kmh'], {startVal: previous_data['wind_speed_kmh'], decimalPlaces: 2, duration: 2});
+    let countPressure = new CountUp('pressure-value', data['pressure'], {startVal: previous_data['pressure'], useGrouping: false, duration: 2});
+    let countRain = new CountUp('rain-value', data['rain_count'], {startVal: previous_data['rain_count'], decimalPlaces: 2, duration: 2});
+    let countHumidity = new CountUp('humidity-value', data['humidity'], {startVal: previous_data['humidity'], duration: 2});
+    
+    countTemp.start();
+    countWind.start();
+    countPressure.start();
+    countRain.start();
+    countHumidity.start();
+    
+    previous_data = data;
+    this.number++;
+
+    // Testowa funkcja, wkrótce implementacja z DB + PHP
+    
+    /*
+    340-0 + 1-20: N
+    21-60: NE
+    61-110: E
+    111-160: SE
+    161-200: S
+    201-250: SW
+    251-290: W
+    291-340: NW
+    */
+
+    let wind_dir = Math.random() * 337.5;
+    let dir_text = 'N';
+    if (get_range(wind_dir, 1, 20)){
+      dir_text = 'N';
+    }
+    if (get_range(wind_dir, 21, 60)){
+      dir_text = 'NE';
+    }
+    if (get_range(wind_dir, 61, 110)){
+      dir_text = 'E';
+    }
+    if (get_range(wind_dir, 111, 160)){
+      dir_text = 'SE';
+    }
+    if (get_range(wind_dir, 161, 200)){
+      dir_text = 'S';
+    }
+    if (get_range(wind_dir, 201, 250)){
+      dir_text = 'SW';
+    }
+    if (get_range(wind_dir, 251, 290)){
+      dir_text = 'W';
+    }
+    if (get_range(wind_dir, 291, 340)){
+      dir_text = 'NW';
+    }
+
+    if(dir_text.length > 1){ // jeśli długość tekstu jest większa niż 1 znak, to przesuń w lewo żeby nadal był na środku
+      document.getElementById('direction').style['margin-left'] = '-5px';
+    }
+    else {
+      document.getElementById('direction').style['margin-left'] = '0px';
+    }
+
+    compass.style.transform = 'rotate(' + wind_dir.toFixed(0) + 'deg)'
+    document.getElementById('direction').innerHTML = '<b>' + dir_text + '</b>';
+}
+
   requestData =()=>{
 
     if(this.number > 5){
       this.number = 2;
     }
-    const $this = this;
-
-    $.ajax({
-      url: ".db/sqlconnect.php",
-      type: 'POST',
-      data: {"num": this.number},
-      dataType:"json",
-      success: function(data) {
-        let countTemp = new CountUp('temperature-value', data['temperature'], {startVal: previous_data['temperature'], decimalPlaces: 2, duration: 2});
-        let countWind = new CountUp('wind-value', data['wind_speed_kmh'], {startVal: previous_data['wind_speed_kmh'], decimalPlaces: 2, duration: 2});
-        let countPressure = new CountUp('pressure-value', data['pressure'], {startVal: previous_data['pressure'], useGrouping: false, duration: 2});
-        let countRain = new CountUp('rain-value', data['rain_count'], {startVal: previous_data['rain_count'], decimalPlaces: 2, duration: 2});
-        let countHumidity = new CountUp('humidity-value', data['humidity'], {startVal: previous_data['humidity'], duration: 2});
-        
-        countTemp.start();
-        countWind.start();
-        countPressure.start();
-        countRain.start();
-        countHumidity.start();
-        
-        previous_data = data;
-        $this.number++;
-
-        // Testowa funkcja, wkrótce implementacja z DB + PHP
-        
-        /*
-        340-0 + 1-20: N
-        21-60: NE
-        61-110: E
-        111-160: SE
-        161-200: S
-        201-250: SW
-        251-290: W
-        291-340: NW
-        */
-
-        let wind_dir = Math.random() * 337.5;
-        let dir_text = 'N';
-        if (get_range(wind_dir, 1, 20)){
-          dir_text = 'N';
-        }
-        if (get_range(wind_dir, 21, 60)){
-          dir_text = 'NE';
-        }
-        if (get_range(wind_dir, 61, 110)){
-          dir_text = 'E';
-        }
-        if (get_range(wind_dir, 111, 160)){
-          dir_text = 'SE';
-        }
-        if (get_range(wind_dir, 161, 200)){
-          dir_text = 'S';
-        }
-        if (get_range(wind_dir, 201, 250)){
-          dir_text = 'SW';
-        }
-        if (get_range(wind_dir, 251, 290)){
-          dir_text = 'W';
-        }
-        if (get_range(wind_dir, 291, 340)){
-          dir_text = 'NW';
-        }
-
-        if(dir_text.length > 1){ // jeśli długość tekstu jest większa niż 1 znak, to przesuń w lewo żeby nadal był na środku
-          document.getElementById('direction').style['margin-left'] = '-5px';
-        }
-        else {
-          document.getElementById('direction').style['margin-left'] = '0px';
-        }
-
-        compass.style.transform = 'rotate(' + wind_dir.toFixed(0) + 'deg)'
-        document.getElementById('direction').innerHTML = '<b>' + dir_text + '</b>';
-    
-
-    }})
+    getSqlResults(".db/sqlconnect.php", this.number).then((data) => {
+      this.update(data);
+    });
   
   };
 
