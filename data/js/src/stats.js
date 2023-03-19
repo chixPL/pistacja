@@ -37,26 +37,26 @@ function load(){
     const ctx3 = document.getElementById('chart3');
     const ctx4 = document.getElementById('chart4');
     
-    // Paleta kolorów uzupełniających: '#FF457A', '#DB2559', '#0F8F1E', '#25DB3C'
+    // Paleta kolorów uzupełniających: '#B20D3B', '#FF457A', '#DB2559', '#0F8F1E', '#25DB3C'
 
     const chart1 = new Chart(ctx1, {
     type: 'bar',
-    data: config('Temperatura (°C)', getRandomData(), '#FF457A'),
+    data: config('Temperatura (°C)', getRandomData(), '#B20D3B'),
     });
 
     const chart2 = new Chart(ctx2, {
         type: 'bar',
-        data: config('Prędkość wiatru (km/h)', getRandomData(), '#DB2559'),
+        data: config('Prędkość wiatru (km/h)', getRandomData(), '#FF457A'),
     });
 
     const chart3 = new Chart(ctx3, {
         type: 'bar',
-        data: config('Ciśnienie (hPa)', getRandomData(), '#0F8F1E'),
+        data: config('Ciśnienie (hPa)', getRandomData(), '#25DB3C'),
     });
 
     const chart4 = new Chart(ctx4, {
         type: 'bar',
-        data: config('Opady (mm)', getRandomData(), '#25DB3C')
+        data: config('Opady (mm)', getRandomData(), '#0F8F1E')
     });
 
     
