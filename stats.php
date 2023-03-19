@@ -20,7 +20,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light" style="background-color:#B20D3B;">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="index.html">
             <img src="data/images/pistacja-logo.svg" alt="Logo" width="32" height="32"
               class="d-inline-block align-text-top">
             <b><span class="primarycolor">Pi</b></span>stacja
