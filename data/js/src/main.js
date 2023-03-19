@@ -1,4 +1,4 @@
-import { CountUp } from './countUp.min.js';
+import { CountUp } from '../../lib/countup/countUp.min.js';
 import 'https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js';
 
 const text = document.getElementById("changeText");
@@ -8,6 +8,25 @@ let previous_data = {'temperature': 0, 'wind_speed_kmh': 0, 'pressure': 0, 'rain
 
 function get_range(x, min, max) {
   return x >= min && x <= max;
+}
+
+function config(title, chartData){
+  return {
+    labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
+    datasets: [{
+      label: title,
+      data: chartData,
+      backgroundColor: '#B20D3B',
+      borderWidth: 1
+    }],
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    },
+  }
+}
 }
 
 class EventLoop{
@@ -125,45 +144,15 @@ let rnd_wind = Array.from({length: 7}, () => (Math.random() * (6 - 0) + 0).toFix
 const ctx_temp = document.getElementById('temp-chart');
 const ctx_wind = document.getElementById('wind-chart');
 
+// Wykresy
 new Chart(ctx_temp, {
   type: 'bar',
-  data: {
-    labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
-    datasets: [{
-      label: 'Temperatura (°C)',
-      data: rnd_temp,
-      backgroundColor: '#B20D3B',
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    },
-  }
+  data: config('Temperatura (°C)', rnd_temp),
 });
-
 
 new Chart(ctx_wind, {
   type: 'bar',
-  data: {
-    labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
-    datasets: [{
-      label: 'Prędkość wiatru (km/h)',
-      data: rnd_wind,
-      backgroundColor: '#B20D3B',
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    },
-  }
+  data: config('Prędkość wiatru (km/h)', rnd_wind),
 });
 
 window.onload = (event) => {

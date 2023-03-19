@@ -14,11 +14,12 @@
     rel="stylesheet">
   <!-- Własne css i js -->
   <link rel="stylesheet" href="style.css">
-  <script src="data/js/main.js" type="module"></script>
+  <script src="data/js/src/main.js" type="module"></script> <!-- TODO: Ustawić na data/js/min/main.min.js kiedy skończę pisać javascripty, na razie zostawiam tak dla testów -->
   <title>Pistacja</title>
 </head>
 
 <body>
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light" style="background-color:#B20D3B;">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -58,12 +59,12 @@
         <br>
 
         <div class="row row-cols-2">
+          <!-- Prędkość -->
           <div class="col">
             <h1>Wiatr:
               <h2><b><span id="wind-value"></span><span class="unit"> km/h</span></b></h2>
             </div>
-
-
+            <!-- Kierunek -->
             <div class="col-lg-auto">
               <div class="row align-items-start">
                   <img id="compass" class="float-start" src="data/images/kompas.svg" style="width: 64px !important;height:64px !important;">
@@ -73,7 +74,7 @@
               </div>
               </div>
           </div>
-
+          <br class="d-none d-lg-block"> <!-- nie wyświetlaj br na urządzeniach mobilnych -->
         <div class="row"> 
           <h1>Ciśnienie:
             <h2><b><span id="pressure-value"></span><span class="unit"> hPa</span></b></h2>
@@ -91,7 +92,7 @@
             <h2><b><span id="humidity-value"></span><span class="unit"> %</span></b></h2>
         </div>
 
-        <!-- Odświeżanie postępu-->
+        <!-- Odświeżanie postępu -->
         <div class="row">
           <div class="container-fluid mb-underlg-2">
             <p id="changeText">Odświeżenie za <span class='primarycolor'><b><u>5</b></u></span> sekund</p>
@@ -103,7 +104,7 @@
         </div>
       </div>
 
-      <div class="col-lg-6 col-xxl-5">
+      <div class="col-lg-6 col-xxl-5"> <!-- wykresy nie wykraczają poza ekran na urządzeniach większych niż 1080p -->
         <!-- Wykresy -->
         <div class="row">
           <canvas id="temp-chart"></canvas>
@@ -115,7 +116,7 @@
         <br>
       </div>
 
-      <div class="col-lg">
+      <div class="col-lg"> <!-- Google Maps API -->
         <div class="row">
           <h1 class="address"><b><span class="primarycolor">Pi</b></span>stacja znajduje się:</h1>
           <br>
@@ -126,9 +127,9 @@
             </iframe>
           </div>
         </div>
-        <div class="row align-self-end">
+        <div class="row align-self-end"> <!-- Creditsy -->
           <p class="text-end mb-0"><span class="primarycolor"><i>made by</i></span></p>
-          <p class="text-end"><b>Anna Fiń</b> & <b>Jakub Rutkowski</b></p>
+          <p class="text-end"><b>Jakub Rutkowski</b> & <b>Anna Fiń</b></p>
         </div>    
       </div>
 
