@@ -85,40 +85,48 @@ class EventLoop{
     */
 
     let wind_dir = Math.random() * 337.5;
-    let dir_text = 'N';
-    if (get_range(wind_dir, 1, 20)){
-      dir_text = 'N';
-    }
-    if (get_range(wind_dir, 21, 60)){
-      dir_text = 'NE';
-    }
-    if (get_range(wind_dir, 61, 110)){
-      dir_text = 'E';
-    }
-    if (get_range(wind_dir, 111, 160)){
-      dir_text = 'SE';
-    }
-    if (get_range(wind_dir, 161, 200)){
-      dir_text = 'S';
-    }
-    if (get_range(wind_dir, 201, 250)){
-      dir_text = 'SW';
-    }
-    if (get_range(wind_dir, 251, 290)){
-      dir_text = 'W';
-    }
-    if (get_range(wind_dir, 291, 340)){
-      dir_text = 'NW';
+    let dir_text;
+    switch(true){
+      case get_range(wind_dir, 1, 20):
+        dir_text = 'N';
+        break;
+      case get_range(wind_dir, 21, 60):
+        dir_text = 'NE';
+        break;  
+      case get_range(wind_dir, 61, 110):
+        dir_text = 'E';
+        break;  
+      case get_range(wind_dir, 111, 160):
+        dir_text = 'SE';
+        break;  
+      case get_range(wind_dir, 161, 200):
+        dir_text = 'S';
+        break;  
+      case get_range(wind_dir, 201, 250):
+        dir_text = 'SW';
+        break;  
+      case get_range(wind_dir, 251, 290):
+        dir_text = 'W';
+        break;  
+      case get_range(wind_dir, 291, 340):
+        dir_text = 'NW';
+        break;
+      default:
+        dir_text = 'N';
     }
 
     if(dir_text.length > 1){ // jeśli długość tekstu jest większa niż 1 znak, to przesuń w lewo żeby nadal był na środku
-      document.getElementById('direction').style['margin-left'] = '-5px';
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) { // sprawdzamy czy urządzenie jest mobilne
+        document.getElementById('direction').style['margin-left'] = '-1vw';
+       } else {
+        document.getElementById('direction').style['margin-left'] = '-5px';
+       }
     }
     else {
-      document.getElementById('direction').style['margin-left'] = '0px';
+      document.getElementById('direction').style['margin-left'] = '0vw';
     }
 
-    compass.style.transform = 'rotate(' + wind_dir.toFixed(0) + 'deg)'
+    compass.style.transform = 'rotate(' + Math.round(wind_dir * 2) / 2 + 'deg)'
     document.getElementById('direction').innerHTML = '<b>' + dir_text + '</b>';
 }
 
