@@ -55,6 +55,7 @@ b{
 .fetch{
     background-color: #0c0c0c;
     color: #cccccc;
+    white-space: pre-wrap;
 }
 
 /* Tylko na komputerze */
