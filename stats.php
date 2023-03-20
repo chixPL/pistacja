@@ -1,3 +1,11 @@
+<?php
+require_once 'data/lib/vendor/autoload.php';
+
+   use SensioLabs\AnsiConverter\AnsiToHtmlConverter;
+
+   $converter = new AnsiToHtmlConverter();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,11 +57,11 @@
     <div id="main" class="container-fluid">
         <!-- Główny kontener-->
         <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-6 col-md-8">
             <div class="row">
                 <h1>Miesięczne wyniki</h1>
             </div>
-            <br>
+            <br class="d-none d-sm-inline-block">
             <div class="row row-cols-lg-2">
             <div class="col-lg-6">
                 <div class="row">
@@ -72,13 +80,27 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg">
-        <div class="row float-lg-end">
-          <div class="d-grid gap-2 d-md-block">
+          <div class="row">
+            <h3>Zakres danych:</h3>
+          <div class="btn-group" role="group" aria-label="Zakres danych wykresu">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+          <label class="btn btn-outline-primary" for="btnradio1">7 dni</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio2">14 dni</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio3">30 dni</label>
+          </div>
+          </div>
+
+          <div class="row g-0 float-end">
+          <div class="col">
           <button id="bar_chart" title="Wykres kolumnowy" type="button" class="btn btn-primary btn-sm"><i class="bi bi-bar-chart-fill"></i></button>
+          </div>
+          <div class="col">
           <button id="line_chart" title="Wykres liniowy" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-graph-up"></i></button>
-        </div>
-        </div>
+          </div>
         </div>
         </div>
 
@@ -93,12 +115,15 @@
               <pre class="fetch font-monospace me-1">
               <?php
                 if(strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile') || strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'android')) { // sprawdzamy czy użytkownik korzysta z telefonu
-                  echo file_get_contents('.db/fetch_noart.txt'); // wersja bez grafiki
+                  $file = file_get_contents('.db/fetch_noart.txt'); // wersja bez grafiki
                   // todo: dodać ansi2html i prawdziwy exec neofetch
                 } else {
                   // exec('neofetch > .db/fetch.txt'); mamy problem: nie mogę tego wgrać na serwer, trzeba będzie to w jakiś sposób pobierać z pistacji
-                  echo file_get_contents('.db/fetch.txt'); // pełna wersja
+                  $file = file_get_contents('.db/fetch.txt'); // pełna wersja
                 }
+
+                echo $converter->convert($file)
+                //echo $file;
                 
               ?>
               </pre>
