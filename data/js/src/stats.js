@@ -62,6 +62,7 @@ function load(){
     
     const bcb = document.getElementById('bar_chart'); // bar chart button
     const lcb = document.getElementById('line_chart'); // line chart button
+
     function viewBar(){
 
         for(let i=1; i<5; i++){
@@ -94,45 +95,39 @@ function load(){
     bcb.addEventListener("click", viewBar, false);
     lcb.addEventListener("click", viewLine, false);
 
-    // todo: naprawić wyświetlanie chartów na dni
-    // function viewDays(num){
-    //   console.log("Viewing days: ", num);
 
-    //   for(let i=1; i<5; i++){
-    //     let current_chart = eval('chart'+i);
+    let data_dict = {}; // dane dla wykresów, żeby się nie zmieniały przy kolejnym uruchomieniu
+    
+    function viewDays(num){
+      console.log("Viewing days: ", num);
+      if (data_dict[num] === undefined){
+      data_dict[num] = getRandomData(num);
+      }
+      //console.log(data_dict)
+
+      for(let i=1; i<5; i++){
+        let current_chart = eval('chart'+i);
  
-    //     // Skasuj istniejące dane
-    //     current_chart.data.labels.pop()
-    //     current_chart.data.datasets[0].data.pop()
+        // Skasuj istniejące dane
+        current_chart.data.labels = [];
+        current_chart.data.datasets[0].data = [];
 
+        // Dodaj nowe dane
+        current_chart.data.datasets[0].data = data_dict[num];
+        // tablica od 1 do num
+        current_chart.data.labels = [...Array(num).keys()].map(x => x+1);
 
-    //     // Dodaj nowe dane
-    //     current_chart.data.labels.push([...Array(num).keys()])
-    //     current_chart.data.datasets[0].data.push(getRandomData(num));
-    //     console.log(getRandomData(num))
-
-    //     current_chart.update();
-    //   }
-    // }
+        current_chart.update();
+      }
+    }
     
-    // if(document.getElementById('btnradio1').is(":checked")){
-    //   console.log("7 dni");
-    //   viewDays(7);
-    // }
-    // if(document.getElementById('btnradio2').is(":checked")){
-    //   console.log("14 dni");
-    //   viewDays(14);
-    // }
-    // if(document.getElementById('btnradio3').is(":checked")){
-    //   console.log("30 dni");
-    //   viewDays(30);
-    // }
+    let btn1 = document.getElementById('btnradio1');
+    let btn2 = document.getElementById('btnradio2');
+    let btn3 = document.getElementById('btnradio3');
     
-    document.getElementById('btnradio1').addEventListener("click", function(event) {viewDays(7);});
-    document.getElementById('btnradio2').addEventListener("click", function(event) {viewDays(14);});
-    document.getElementById('btnradio3').addEventListener("click", function(event) {viewDays(30);});
-    
-
+    btn1.addEventListener("click", function(event) {viewDays(7);});
+    btn2.addEventListener("click", function(event) {viewDays(14);});
+    btn3.addEventListener("click", function(event) {viewDays(30);});
     
 };
 
