@@ -115,13 +115,10 @@ function load(){
 
         // Dodaj nowe dane
         current_chart.data.datasets[0].data = data_dict[num];
-        // tablica od 1 do num
-        current_chart.data.labels = [...Array(num).keys()].map(x => x+1);
+        current_chart.data.labels = [...Array(num).keys()].map(x => x+1);         // tablica od 1 do num
 
         current_chart.options.plugins.tooltip.callbacks.title = function(context) {
-          let d = new Date(); // data dzisiejsza
-          d.setDate(d.getDate() - num + parseInt(context[0].label) + 1); 
-          return DateTime.fromJSDate(d).setLocale('pl').toLocaleString(DateTime.DATE_FULL);
+          return DateTime.now().minus({days: num - parseInt(context[0].label)}).setLocale('pl').toLocaleString(DateTime.DATE_FULL); // zwróć datę N dni od teraz w formacie np. 15 marca 2023
         };
         current_chart.update();
       }
