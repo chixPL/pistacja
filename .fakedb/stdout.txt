@@ -1,0 +1,19 @@
+spolek@PC03 
+----------- 
+OS: Ubuntu 22.04.2 LTS x86_64 
+Host: HP Z400 Workstation 
+Kernel: 5.19.0-35-generic 
+Uptime: 5 mins 
+Packages: 2293 (dpkg), 13 (snap) 
+Shell: bash 5.1.16 
+Resolution: 1680x1050 
+DE: GNOME 42.5 
+WM: Mutter 
+WM Theme: Adwaita 
+Theme: Yaru-dark [GTK2/3] 
+Icons: Yaru [GTK2/3] 
+Terminal: gnome-terminal 
+CPU: Intel Xeon W3520 (8) @ 2.661GHz 
+GPU: NVIDIA Quadro FX 1800 
+Memory: 2976MiB / 7929MiB 
+

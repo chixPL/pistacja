@@ -115,7 +115,12 @@ function load(){
 
         // Dodaj nowe dane
         current_chart.data.datasets[0].data = data_dict[num];
-        current_chart.data.labels = [...Array(num).keys()].map(x => x+1);         // tablica od 1 do num
+        if(num == 7){
+          current_chart.data.labels = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"];
+        }
+        else{
+        current_chart.data.labels = [...Array(num).keys()].map(x => x+1);         // tablica od 1 do num'
+      }
 
         current_chart.options.plugins.tooltip.callbacks.title = function(context) {
           return DateTime.now().minus({days: num - parseInt(context[0].label)}).setLocale('pl').toLocaleString(DateTime.DATE_FULL); // zwróć datę N dni od teraz w formacie np. 15 marca 2023

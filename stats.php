@@ -21,7 +21,7 @@ require_once 'data/lib/vendor/autoload.php';
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap"
     rel="stylesheet">
   <!-- Własne css i js -->
-  <script src="data/js/src/stats.js" type="module"></script> <!-- TODO: Ustawić na data/js/min/stats.min.js kiedy skończę pisać javascripty, na razie zostawiam tak dla testów -->
+  <script src="data/js/min/stats.min.js" type="module"></script>
   <link rel="stylesheet" href="style.css">
   <title>Pistacja</title>
 </head>
@@ -112,19 +112,13 @@ require_once 'data/lib/vendor/autoload.php';
             <span id="uptime"></span>
             </div>
             <div class="row">
-              <pre class="fetch font-monospace me-1">
-              <?php
+              <pre class="fetch font-monospace me-1"><?php // nie dodaje newline
                 if(strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile') || strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'android')) { // sprawdzamy czy użytkownik korzysta z telefonu
-                  $file = file_get_contents('.db/fetch_noart.txt'); // wersja bez grafiki
-                  // todo: dodać ansi2html i prawdziwy exec neofetch
+                  $file = file_get_contents('.db/stdout.txt'); // wersja bez grafiki
+                  echo $file;
                 } else {
-                  // exec('neofetch > .db/fetch.txt'); mamy problem: nie mogę tego wgrać na serwer, trzeba będzie to w jakiś sposób pobierać z pistacji
-                  $file = file_get_contents('.db/fetch.txt'); // pełna wersja
+                  include('.db/fetch.php');
                 }
-
-                echo $converter->convert($file)
-                //echo $file;
-                
               ?>
               </pre>
             </div>
