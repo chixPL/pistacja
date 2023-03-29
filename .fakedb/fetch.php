@@ -1,40 +1,51 @@
 <?php
-  $file = file('.db/stdout.txt');
+  $file = file('.db/stdout.txt', FILE_IGNORE_NEW_LINES);
 ?>
+<span class="login">user@user-PC:</span><span class="tilde">~</span>$ neofetch
+<div class="row">
+<div class="col-auto">
+<span class="ansi31"></span><span class="ansi1 ansi31">            .-/+oossssoo+/-.
+        `:+ssssssssssssssssss+:`
+      -+ssssssssssssssssssyyssss+-
+    .ossssssssssssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">dMMMNy</span><span class="ansi31"></span><span class="ansi1 ansi31">sssso.
+   /sssssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">hdmmNNmmyNMMMMh</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssss/
+  +sssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">hm</span><span class="ansi31"></span><span class="ansi1 ansi31">yd</span><span class="ansi1 ansi37"></span><span class="ansi1">MMMMMMMNddddy</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssss+
+ /ssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">hNMMM</span><span class="ansi31"></span><span class="ansi1 ansi31">yh</span><span class="ansi1 ansi37"></span><span class="ansi1">hyyyyhmNMMMNh</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssss/
+.ssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">dMMMNh</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">hNMMMd</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssss.
++ssss</span><span class="ansi1 ansi37"></span><span class="ansi1">hhhyNMMNy</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">yNMMMy</span><span class="ansi31"></span><span class="ansi1 ansi31">sssssss+
+oss</span><span class="ansi1 ansi37"></span><span class="ansi1">yNMMMNyMMh</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">hmmmh</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssso
+oss</span><span class="ansi1 ansi37"></span><span class="ansi1">yNMMMNyMMh</span><span class="ansi31"></span><span class="ansi1 ansi31">sssssssssssssshmmmh</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssso
++ssss</span><span class="ansi1 ansi37"></span><span class="ansi1">hhhyNMMNy</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">yNMMMy</span><span class="ansi31"></span><span class="ansi1 ansi31">sssssss+
+.ssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">dMMMNh</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">hNMMMd</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssss.
+ /ssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">hNMMM</span><span class="ansi31"></span><span class="ansi1 ansi31">yh</span><span class="ansi1 ansi37"></span><span class="ansi1">hyyyyhdNMMMNh</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssss/
+  +sssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">dm</span><span class="ansi31"></span><span class="ansi1 ansi31">yd</span><span class="ansi1 ansi37"></span><span class="ansi1">MMMMMMMMddddy</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssssss+
+   /sssssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">hdmNNNNmyNMMMMh</span><span class="ansi31"></span><span class="ansi1 ansi31">ssssss/
+    .ossssssssssssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">dMMMNy</span><span class="ansi31"></span><span class="ansi1 ansi31">sssso.
+      -+sssssssssssssssss</span><span class="ansi1 ansi37"></span><span class="ansi1">yyy</span><span class="ansi31"></span><span class="ansi1 ansi31">ssss+-
+        `:+ssssssssssssssssss+:`
+            .-/+oossssoo+/-.<span class="ansi1"></span><span class="ansi1 ansi31"></span>
+</div>
+<div class="col">
+<span class="ansi1 ansi31">user</span>@<span class="ansi31"></span><span class="ansi1 ansi31">user-PC</span> 
+-------------- 
+<span class="ansi31"></span><span class="ansi1 ansi31">OS</span>:<span class="ansi38-15"> <?= substr($file[2], 4); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">Host</span>:<span class="ansi38-15"> <?= substr($file[3], 6); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">Kernel</span>:<span class="ansi38-15"> <?= substr($file[4], 8);?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">Uptime</span>:<span class="ansi38-15"> <?= substr($file[5], 8); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">Packages</span>:<span class="ansi38-15"> <?= substr($file[6], 10);  ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">Shell</span>:<span class="ansi38-15"> <?= substr($file[7], 7); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">Resolution</span>:<span class="ansi38-15"> <?= substr($file[8], 12); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">DE</span>:<span class="ansi38-15"> <?= substr($file[9], 4); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">WM</span>:<span class="ansi38-15"> <?= substr($file[10], 4); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">WM Theme</span>:<span class="ansi38-15"> <?= substr($file[11], 10); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">Theme</span>:<span class="ansi38-15"> <?= substr($file[12], 7); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">Icons</span>:<span class="ansi38-15"> <?= substr($file[13], 7); ?> </span> 
+<span class="ansi31"></span><span class="ansi1 ansi31">Terminal</span>:<span class="ansi38-15"> <?= substr($file[14], 10); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">CPU</span>:<span class="ansi38-15"> <?= substr($file[15], 5); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">GPU</span>:<span class="ansi38-15"> <?= substr($file[16], 5); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">Memory</span>:<span class="ansi38-15"> <?= substr($file[17], 8); ?> </span>
 
-<span style="color:#A00"><b>        .-/+oossssoo+/-.
-    `:+ssssssssssssssssss+:`
-  -+ssssssssssssssssssyyssss+-
-.ossssssssssssssssss<span style="color:#AAA"></span></b></span><b>dMMMNy</b><span style="color:#A00"><b>sssso.
-/sssssssssss<span style="color:#AAA"></span></b></span><b>hdmmNNmmyNMMMMh</b><span style="color:#A00"><b>ssssss/
-+sssssssss<span style="color:#AAA"></span></b></span><b>hm</b><span style="color:#A00"><b>yd<span style="color:#AAA"></span></b></span><b>MMMMMMMNddddy</b><span style="color:#A00"><b>ssssssss+
-/ssssssss<span style="color:#AAA"></span></b></span><b>hNMMM</b><span style="color:#A00"><b>yh<span style="color:#AAA"></span></b></span><b>hyyyyhmNMMMNh</b><span style="color:#A00"><b>ssssssss/
-.ssssssss<span style="color:#AAA"></span></b></span><b>dMMMNh</b><span style="color:#A00"><b>ssssssssss<span style="color:#AAA"></span></b></span><b>hNMMMd</b><span style="color:#A00"><b>ssssssss.
-+ssss<span style="color:#AAA"></span></b></span><b>hhhyNMMNy</b><span style="color:#A00"><b>ssssssssssss<span style="color:#AAA"></span></b></span><b>yNMMMy</b><span style="color:#A00"><b>sssssss+
-oss<span style="color:#AAA"></span></b></span><b>yNMMMNyMMh</b><span style="color:#A00"><b>ssssssssssssss<span style="color:#AAA"></span></b></span><b>hmmmh</b><span style="color:#A00"><b>ssssssso
-oss<span style="color:#AAA"></span></b></span><b>yNMMMNyMMh</b><span style="color:#A00"><b>sssssssssssssshmmmh</b></span><span style="color:#A00"><b>ssssssso
-+ssss<span style="color:#AAA"></span></b></span><b>hhhyNMMNy</b><span style="color:#A00"><b>ssssssssssss<span style="color:#AAA"></span></b></span><b>yNMMMy</b><span style="color:#A00"><b>sssssss+
-.ssssssss<span style="color:#AAA"></span></b></span><b>dMMMNh</b><span style="color:#A00"><b>ssssssssss<span style="color:#AAA"></span></b></span><b>hNMMMd</b><span style="color:#A00"><b>ssssssss.
-/ssssssss<span style="color:#AAA"></span></b></span><b>hNMMM</b><span style="color:#A00"><b>yh<span style="color:#AAA"></span></b></span><b>hyyyyhdNMMMNh</b><span style="color:#A00"><b>ssssssss/
-+sssssssss<span style="color:#AAA"></span></b></span><b>dm</b><span style="color:#A00"><b>yd<span style="color:#AAA"></span></b></span><b>MMMMMMMMddddy</b><span style="color:#A00"><b>ssssssss+
-/sssssssssss<span style="color:#AAA"></span></b></span><b>hdmNNNNmyNMMMMh</b><span style="color:#A00"><b>ssssss/
-.ossssssssssssssssss<span style="color:#AAA"></span></b></span><b>dMMMNy</b><span style="color:#A00"><b>sssso.
-  -+sssssssssssssssss<span style="color:#AAA"></span></b></span><b>yyy</b><span style="color:#A00"><b>ssss+-
-    `:+ssssssssssssssssss+:`
-        .-/+oossssoo+/-.</b></span>
-<b><span style="color:#A00"><b>user</b></span></b>@<span style="color:#A00"><b>computername</b></span> 
---------------------------- 
-<span style="color:#A00"><b>OS</b></span>: <?php echo substr($file[2], 4); ?>
-<span style="color:#A00"><b>Host</b></span>: <?php echo substr($file[3], 6); ?>
-<?php // z jakiegoś powodu te poniższe 3 tabelki wymagają pozbycia się newline ?>
-<span style="color:#A00"><b>Kernel</b></span>: <?php echo substr($file[4], 8);?>
-<span style="color:#A00"><b>Uptime</b></span>: <?php echo substr(str_replace("\n", "", $file[5]), 8); ?>  
-<span style="color:#A00"><b>Packages</b></span>: <?php echo substr(str_replace("\n", "", $file[6]), 10);  ?> 
-<span style="color:#A00"><b>Shell</b></span>: <?php echo substr($file[7], 7); ?>
-<span style="color:#A00"><b>Terminal</b></span>: <?php echo substr($file[8], 12); ?>
-<span style="color:#A00"><b>CPU</b></span>: <?php echo substr($file[15], 5); ?>
-<span style="color:#A00"><b>Memory</b></span>: <?php echo substr($file[16], 5); ?>
-
-<span style="color:#000"><span style="background-color:#000">   <span style="color:#A00"><span style="background-color:#A00">   <span style="color:#0A0"><span style="background-color:#0A0">   <span style="color:#A50"><span style="background-color:#A50">   <span style="color:#00A"><span style="background-color:#00A">   <span style="color:#A0A"><span style="background-color:#A0A">   <span style="color:#0AA"><span style="background-color:#0AA">   <span style="color:#AAA"><span style="background-color:#AAA">   </span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
-<span style="color:#555"><span style="background-color:#555">   <span style="color:#F55"><span style="background-color:#F55">   <span style="color:#5F5"><span style="background-color:#5F5">   <span style="color:#FF5"><span style="background-color:#FF5">   <span style="color:#55F"><span style="background-color:#55F">   <span style="color:#F5F"><span style="background-color:#F5F">   <span style="color:#5FF"><span style="background-color:#5FF">   <span style="color:#FFF"><span style="background-color:#FFF">   </span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
-
+<span class="ansi30"></span><span class="ansi30 ansi40">   </span><span class="ansi31 ansi40"></span><span class="ansi31 ansi41">   </span><span class="ansi32 ansi41"></span><span class="ansi32 ansi42">   </span><span class="ansi33 ansi42"></span><span class="ansi33 ansi43">   </span><span class="ansi34 ansi43"></span><span class="ansi34 ansi44">   </span><span class="ansi35 ansi44"></span><span class="ansi35 ansi45">   </span><span class="ansi36 ansi45"></span><span class="ansi36 ansi46">   </span><span class="ansi37 ansi46"></span><span class="ansi37 ansi47">   </span>
+<span class="ansi38-8"></span><span class="ansi38-8 ansi48-8">   </span><span class="ansi38-9 ansi48-8"></span><span class="ansi38-9 ansi48-9">   </span><span class="ansi38-10 ansi48-9"></span><span class="ansi38-10 ansi48-10">   </span><span class="ansi38-11 ansi48-10"></span><span class="ansi38-11 ansi48-11">   </span><span class="ansi38-12 ansi48-11"></span><span class="ansi38-12 ansi48-12">   </span><span class="ansi38-13 ansi48-12"></span><span class="ansi38-13 ansi48-13">   </span><span class="ansi38-14 ansi48-13"></span><span class="ansi38-14 ansi48-14">   </span><span class="ansi38-15 ansi48-14"></span><span class="ansi38-15 ansi48-15">   </span>
+</div>
+</div>

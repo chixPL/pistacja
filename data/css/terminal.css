@@ -1,0 +1,87 @@
+/* terminal font */
+@font-face {
+    font-family: "dejavu-sans-mono";
+    src: url(../fonts/DejaVuSansMono.ttf);
+}
+
+@font-face {
+    font-family: "dejavu-sans-mono";
+    src: url(../fonts/DejaVuSansMono-Bold.ttf);
+    font-weight: bold;
+}
+/* end terminal font */
+
+/* ansi to html */
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; } 
+.ansi30 { color: #000316; }
+.ansi31 { color: #BC1C28; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi34 { color: #0000aa; }
+.ansi35 { color: #E850A8; }
+.ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
+.ansi40 { background-color: #000316; }
+.ansi41 { background-color: #aa0000; }
+.ansi42 { background-color: #00aa00; }
+.ansi43 { background-color: #aa5500; }
+.ansi44 { background-color: #0000aa; }
+.ansi45 { background-color: #E850A8; }
+.ansi46 { background-color: #00aaaa; }
+.ansi47 { background-color: #F5F1DE; }
+.ansi38-8 { color: #7f7f7f; }
+.ansi38-9 { color: #ff0000; }
+.ansi38-10 { color: #00ff00; }
+.ansi38-11 { color: #ffff00; }
+.ansi38-12 { color: #5c5cff; }
+.ansi38-13 { color: #ff00ff; }
+.ansi38-14 { color: #00ffff; }
+.ansi38-15 { color: #ffffff; }
+.ansi48-8 { background-color: #7f7f7f; }
+.ansi48-9 { background-color: #ff0000; }
+.ansi48-10 { background-color: #00ff00; }
+.ansi48-11 { background-color: #ffff00; }
+.ansi48-12 { background-color: #5c5cff; }
+.ansi48-13 { background-color: #ff00ff; }
+.ansi48-14 { background-color: #00ffff; }
+.ansi48-15 { background-color: #ffffff; }
+/* end ansi to html */
+
+
+/* terminal design */
+
+.login{
+    color: #269450 !important;
+    font-weight: bold !important;
+}
+
+.tilde{
+    color: #12488A !important;
+    font-weight: bold !important;
+}
+
+/* Tylko na komputerze */
+@media (min-width: 992px) { 
+    .terminal{
+        border-radius: 50px;
+        border-color: rgba(56, 4, 40, 0.9);
+    }
+}
+
+.terminal{
+    background: #380C2A !important;
+    font-size: 1.5vh;
+    color: white;
+    height: calc(100% - 25px);
+    margin-top: -1px;
+    padding-top: 2px;
+    font-family: "dejavu-sans-mono", "Ubuntu Mono", "Courier New", monospace !important;
+    font-size: 1.5vh;
+    letter-spacing: 1px !important;
+    line-height: 2vh;
+}

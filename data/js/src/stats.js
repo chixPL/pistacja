@@ -8,9 +8,6 @@ function load(){
     function getRandomData(len){
         return Array.from({length: len}, () => Math.ceil(Math.random() * 30)); // todo: zamienić na DB
     }
-    function currentUptime(){
-        document.getElementById('uptime').innerHTML = new Date(Date.now() - start);
-    }
 
     function config(title, chartData, color){
         return {
@@ -30,8 +27,6 @@ function load(){
         }
       }
       }
-
-    const uptime = window.setInterval(currentUptime, 1000)
 
     const ctx1 = document.getElementById('chart1');
     const ctx2 = document.getElementById('chart2');

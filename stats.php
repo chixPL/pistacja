@@ -1,9 +1,7 @@
 <?php
-require_once 'data/lib/vendor/autoload.php';
-
-   use SensioLabs\AnsiConverter\AnsiToHtmlConverter;
-
-   $converter = new AnsiToHtmlConverter();
+function isMobile() {
+  return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +20,8 @@ require_once 'data/lib/vendor/autoload.php';
     rel="stylesheet">
   <!-- Własne css i js -->
   <script src="data/js/min/stats.min.js" type="module"></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="data/css/style.css">
+  <link rel="stylesheet" href="data/css/terminal.css">
   <title>Pistacja</title>
 </head>
 <body>
@@ -109,16 +108,16 @@ require_once 'data/lib/vendor/autoload.php';
             <h1>Uptime:</h1>
             </div>
             <div class="row">
-            <span id="uptime"></span>
+            <span id="uptime"><?php echo shell_exec('uptime -p'); ?></span>
             </div>
             <div class="row">
-              <pre class="fetch font-monospace me-1"><?php // nie dodaje newline
-                if(strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile') || strstr(strtolower($_SERVER['HTTP_USER_AGENT']), 'android')) { // sprawdzamy czy użytkownik korzysta z telefonu
-                  $file = file_get_contents('.db/stdout.txt'); // wersja bez grafiki
-                  echo $file;
-                } else {
-                  include('.db/fetch.php');
+              <pre class="terminal ansi2html-content"><?php // nie dodaje newline
+                if(isMobile()) {
+                  echo '<br>'; // lepiej wygląda to na telefonie
+                } else{
+                  echo ' ';
                 }
+                include('.db/fetch.php') 
               ?>
               </pre>
             </div>
