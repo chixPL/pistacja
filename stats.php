@@ -1,7 +1,30 @@
 <?php
+
+// funkcje
+
 function isMobile() {
   return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
+
+function Uptime() {
+  $str   = @file_get_contents('/proc/uptime');
+  $num   = floatval($str);
+  $secs  = $num % 60;
+  $num   = (int)($num / 60);
+  $mins  = $num % 60;
+  $num   = (int)($num / 60);
+  $hours = $num % 24;
+  $num   = (int)($num / 24);
+  $days  = $num;
+
+  return array(
+      "dni"  => $days,
+      "godzin" => $hours,
+      "minut"  => $mins,
+      "sekund"  => $secs
+  );
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -108,7 +131,17 @@ function isMobile() {
             <h1>Uptime:</h1>
             </div>
             <div class="row">
-            <span id="uptime"><?php echo shell_exec('uptime -p'); ?></span>
+            <span id="uptime">
+              <?php
+                echo 'Serwer działa: ';
+                $ut = Uptime();
+                foreach($ut as $key => $value) {
+                  if($ut[$key] != 0) {
+                    echo $ut[$key] . ' ' . $key . ' ';
+                  }
+                }
+              ?>
+              </span>
             </div>
             <div class="row">
               <pre class="terminal ansi2html-content"><?php // nie dodaje newline

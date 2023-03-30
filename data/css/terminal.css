@@ -2,12 +2,14 @@
 @font-face {
     font-family: "dejavu-sans-mono";
     src: url(../fonts/DejaVuSansMono.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: "dejavu-sans-mono";
     src: url(../fonts/DejaVuSansMono-Bold.ttf);
     font-weight: bold;
+    font-display: swap;
 }
 /* end terminal font */
 
@@ -17,7 +19,7 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi1 { font-weight: bold; } 
+.ansi1 { font-weight: bold; }
 .ansi30 { color: #000316; }
 .ansi31 { color: #BC1C28; }
 .ansi32 { color: #00aa00; }
@@ -80,7 +82,7 @@
     height: calc(100% - 25px);
     margin-top: -1px;
     padding-top: 2px;
-    font-family: "dejavu-sans-mono", "Ubuntu Mono", "Courier New", monospace !important;
+    font-family: "Monospace", "dejavu-sans-mono", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace !important;
     font-size: 1.5vh;
     letter-spacing: 1px !important;
     line-height: 2vh;

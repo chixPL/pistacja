@@ -1,7 +1,7 @@
 <?php
   $file = file('.db/stdout.txt', FILE_IGNORE_NEW_LINES);
 ?>
-<span class="login">user@user-PC:</span><span class="tilde">~</span>$ neofetch
+<span class="login"><?=$file[0]?>:</span><span class="tilde">~</span>$ neofetch
 <div class="row">
 <div class="col-auto">
 <span class="ansi31"></span><span class="ansi1 ansi31">            .-/+oossssoo+/-.

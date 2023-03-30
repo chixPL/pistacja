@@ -3,7 +3,7 @@ import { DateTime } from "../../lib/luxon/luxon.min.js";
 
 function load(){
 
-    let start = new Date();
+    let weekdays = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'];
 
     function getRandomData(len){
         return Array.from({length: len}, () => Math.ceil(Math.random() * 30)); // todo: zamienić na DB
@@ -11,7 +11,7 @@ function load(){
 
     function config(title, chartData, color){
         return {
-          labels: ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
+          labels: weekdays,
           datasets: [{
             label: title,
             data: chartData,
@@ -111,7 +111,7 @@ function load(){
         // Dodaj nowe dane
         current_chart.data.datasets[0].data = data_dict[num];
         if(num == 7){
-          current_chart.data.labels = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"];
+          current_chart.data.labels = weekdays;
         }
         else{
         current_chart.data.labels = [...Array(num).keys()].map(x => x+1);         // tablica od 1 do num'
