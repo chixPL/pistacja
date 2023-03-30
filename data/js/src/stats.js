@@ -112,14 +112,14 @@ function load(){
         current_chart.data.datasets[0].data = data_dict[num];
         if(num == 7){
           current_chart.data.labels = weekdays;
+          current_chart.options.plugins.tooltip.callbacks.title = function(context) { return context[0].label; }
         }
         else{
         current_chart.data.labels = [...Array(num).keys()].map(x => x+1);         // tablica od 1 do num'
-      }
-
         current_chart.options.plugins.tooltip.callbacks.title = function(context) {
           return DateTime.now().minus({days: num - parseInt(context[0].label)}).setLocale('pl').toLocaleString(DateTime.DATE_FULL); // zwróć datę N dni od teraz w formacie np. 15 marca 2023
-        };
+        }
+        }
         current_chart.update();
       }
     }
