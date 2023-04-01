@@ -1,4 +1,7 @@
 .venv/
-Baza/
-Test/
+baza/
+test/
+base/
+__pycache__/
+.vscode/
 database.ini

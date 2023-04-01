@@ -1,27 +1,25 @@
-import math
-import time
-import board
-from gpiozero import Button, MCP3008
-import adafruit_dht
-import adafruit_lps2x
-import statistics
-import psutil
-import atexit
-from apscheduler.schedulers.background import BackgroundScheduler
-import mysql.connector
-from config import config
-
-"""
-do testów:
-from threading import Thread
-from datetime import datetime
-"""
-
 """
 Pistacja - stacja pogodowa za pomocą Raspberry Pi
 Losto 2022
 by: Jakub Rutkowski & Ania Fiń
 """
+
+# Standardowe importy
+import math
+import time
+import atexit
+import statistics
+
+# Customowe importy (pip install -r requirements.txt)
+import board
+from gpiozero import Button, MCP3008
+import adafruit_dht
+import adafruit_lps2x
+import psutil
+
+from apscheduler.schedulers.background import BackgroundScheduler
+import mysql.connector
+from config import config
 
 # Naprawa DHT przy kolejnym odpaleniu programu
 for proc in psutil.process_iter():
@@ -29,7 +27,6 @@ for proc in psutil.process_iter():
         proc.kill()
 
 results = {}
-results['rain_count'] = 0.0
 results_old = {}
 
 class Wind():
@@ -95,8 +92,6 @@ class Wind():
     
     def wind_count(self):
         self.dev_wind_sensor.when_pressed = self.spin
-        
-        start_time = time.time()
     
         final_speed_kmh = self.calculate_speed()[0]
         final_speed_ms = self.calculate_speed()[1]
@@ -139,7 +134,7 @@ class Wind():
         return 0.0 if average == 360 else average
     
 
-    def wind_direction(self, length=5):
+    def wind_direction(self):
         data = []
         wind = round(self.adc.value*3.3, 1)
         if not wind in self.volts:
@@ -219,7 +214,6 @@ class SQLDatabase:
     def close_conn(self):
         self.cur.close()
         self.conn.close()                        # zamkni?cie konektora do bazy
-        print("Zamknięto połączenie z baz?...")
 
        
 
@@ -229,22 +223,23 @@ print("=" * 20)
 print("Pistacja aktywowana!")
 print("=" * 20)
 
-sched = BackgroundScheduler(job_defaults={'max_instances': 6})
-
+# Deklaracje
 wind = Wind()
 rain = Rain()
 act = ActiveSensors()
 
+# Threading
+sched = BackgroundScheduler(job_defaults={'max_instances': 6})
 sched.add_job(wind.post, 'interval', seconds=5)
 sched.add_job(rain.post, 'interval', seconds=5)
 sched.add_job(act.post, 'interval', seconds=5)
 sched.add_job(rain.reset_rainfall, 'interval', hours=1)
-
 sched.start()
 
-db = SQLDatabase()
+db = SQLDatabase() # połączenie z bazą danych
+atexit.register(db.close_conn) # zamknięcie połączenia z bazą danych przy wyłączeniu programu
+db.execute("INSERT INTO start_times VALUES(CURRENT_TIMESTAMP()") # zapisanie czasu startu programu (dla uptime)
 
-atexit.register(db.close_conn)
 while(True):
     time.sleep(5)
     results = results_old | results # przenieś wszystkie dane z obecnych wyników do results, jeśli są stare wyniki których nie ma w nowych (dht :P) to zostaw te same
