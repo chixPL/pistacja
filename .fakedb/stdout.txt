@@ -1,19 +1,15 @@
-spolek@PC03 
+pi@pistacja 
 ----------- 
-OS: Ubuntu 22.04.2 LTS x86_64 
-Host: HP Z400 Workstation 
-Kernel: 5.19.0-35-generic 
-Uptime: 5 mins 
-Packages: 2293 (dpkg), 13 (snap) 
-Shell: bash 5.1.16 
-Resolution: 1680x1050 
-DE: GNOME 42.5 
-WM: Mutter 
-WM Theme: Adwaita 
-Theme: Yaru-dark [GTK2/3] 
-Icons: Yaru [GTK2/3] 
-Terminal: gnome-terminal 
-CPU: Intel Xeon W3520 (8) @ 2.661GHz 
-GPU: NVIDIA Quadro FX 1800 
-Memory: 2976MiB / 7929MiB 
-
+OS: Raspbian GNU/Linux 11 (bullseye) armv7l 
+Host: Raspberry Pi 3 Model B Rev 1.2 
+Kernel: 5.15.76-v7+ 
+Uptime: 15 mins 
+Packages: 1429 (dpkg) 
+Shell: bash 5.1.4 
+DE: LXDE 
+Theme: PiXflat [GTK3] 
+Icons: PiXflat [GTK3] 
+Terminal: lxterminal 
+Terminal Font: Monospace 10 
+CPU: BCM2835 (4) @ 1.200GHz 
+Memory: 181MiB / 922MiB 

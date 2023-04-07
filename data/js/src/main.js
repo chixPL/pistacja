@@ -132,7 +132,7 @@ class EventLoop{
     if(this.number > 5){
       this.number = 2;
     }
-    getSqlResults(".db/sqlconnect.php", this.number).then((data) => {
+    getSqlResults(".db/results.php", this.number).then((data) => {
       this.update(data);
     });
   

@@ -5,26 +5,6 @@
 function isMobile() {
   return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
-
-function Uptime() {
-  $str   = @file_get_contents('/proc/uptime');
-  $num   = floatval($str);
-  $secs  = $num % 60;
-  $num   = (int)($num / 60);
-  $mins  = $num % 60;
-  $num   = (int)($num / 60);
-  $hours = $num % 24;
-  $num   = (int)($num / 24);
-  $days  = $num;
-
-  return array(
-      "dni"  => $days,
-      "godzin" => $hours,
-      "minut"  => $mins,
-      "sekund"  => $secs
-  );
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +24,7 @@ function Uptime() {
   <!-- Własne css i js -->
   <script src="data/js/min/stats.min.js" type="module"></script>
   <link rel="stylesheet" href="data/css/style.css">
-  <link rel="stylesheet" href="data/css/terminal.css">
+  <link rel="stylesheet" href="data/css/terminal/raspbian.css"> <!-- Zamień na ubuntu.css dla Ubuntu -->
   <title>Pistacja</title>
 </head>
 <body>
@@ -134,12 +114,7 @@ function Uptime() {
             <span id="uptime">
               <?php
                 echo 'Serwer działa: ';
-                $ut = Uptime();
-                foreach($ut as $key => $value) {
-                  if($ut[$key] != 0) {
-                    echo $ut[$key] . ' ' . $key . ' ';
-                  }
-                }
+                include('.db/uptime.php')
               ?>
               </span>
             </div>
@@ -150,7 +125,7 @@ function Uptime() {
                 } else{
                   echo ' ';
                 }
-                include('.db/fetch.php') 
+                include('.db/templates/fetch_raspbian.php') // fetch_ubuntu.php dla Ubuntu
               ?>
               </pre>
             </div>
