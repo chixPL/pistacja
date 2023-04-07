@@ -11,9 +11,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap"
     rel="stylesheet">
+  <!-- Mechaniczny counter dla odświeżania -->
+  <script src="data/lib/odometer/odometer.min.js"></script>
+  <link rel="stylesheet" href="data/lib/odometer/odometer-theme-default.css">
   <!-- Własne css i js -->
   <link rel="stylesheet" href="data/css/style.css">
-  <script src="data/js/min/main.min.js" type="module"></script> <!-- TODO: Ustawić na data/js/min/main.min.js kiedy skończę pisać javascripty, na razie zostawiam tak dla testów -->
+  <script src="data/js/min/main.min.js" type="module"></script>
   <title>Pistacja</title>
 </head>
 
@@ -94,7 +97,7 @@
         <!-- Odświeżanie postępu -->
         <div class="row">
           <div class="container-fluid mb-underlg-2">
-            <p id="changeText">Odświeżenie za <span class='primarycolor'><b><u>5</b></u></span> sekund</p>
+            <p id="changeText">Odświeżenie za <span id="countdown" class='odometer primarycolor'>5</span> sekund</p>
             <div class="progress">
               <div id="resetprogress" class="progress-bar bg-danger" role="progressbar" aria-label="Basic example"
                 style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>

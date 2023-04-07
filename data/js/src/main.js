@@ -1,9 +1,8 @@
 import { CountUp } from '../../lib/countup/countUp.min.js';
 import '../../lib/chartjs/chart.umd.min.js';
 
-const text = document.getElementById("changeText");
-const progressbar = document.getElementById("resetprogress")
-
+const progressbar = document.getElementById("resetprogress");
+const numCountdown = document.getElementById("countdown");
 let previous_data = {'temperature': 0, 'wind_speed_kmh': 0, 'pressure': 0, 'rain_count': 0, 'humidity' : 0}; // dla counterów
 
 function get_range(x, min, max) {
@@ -50,7 +49,7 @@ class EventLoop{
   }
 
   change =()=>{
-    text.innerHTML = "Odświeżenie za <span class='primarycolor'><b><u>" + (5-this.counter) + "</b></u></span> sekund";
+    numCountdown.innerHTML = 5-this.counter;
     progressbar.style = "width: " + this.counter*20 + "%";
     progressbar.ariaValueNow = this.counter*20;
   }
@@ -85,30 +84,36 @@ class EventLoop{
     */
 
     let wind_dir = Math.random() * 337.5;
-    let dir_text = 'N';
-    if (get_range(wind_dir, 1, 20)){
-      dir_text = 'N';
-    }
-    if (get_range(wind_dir, 21, 60)){
-      dir_text = 'NE';
-    }
-    if (get_range(wind_dir, 61, 110)){
-      dir_text = 'E';
-    }
-    if (get_range(wind_dir, 111, 160)){
-      dir_text = 'SE';
-    }
-    if (get_range(wind_dir, 161, 200)){
-      dir_text = 'S';
-    }
-    if (get_range(wind_dir, 201, 250)){
-      dir_text = 'SW';
-    }
-    if (get_range(wind_dir, 251, 290)){
-      dir_text = 'W';
-    }
-    if (get_range(wind_dir, 291, 340)){
-      dir_text = 'NW';
+    let dir_text = ''; // tekst kierunku wiatru
+
+    switch(true){
+      case get_range(wind_dir, 1, 20):
+        dir_text = 'N';
+        break;
+      case get_range(wind_dir, 21, 60):
+        dir_text = 'NE';
+        break;
+      case get_range(wind_dir, 61, 110):
+        dir_text = 'E';
+        break;
+      case get_range(wind_dir, 111, 160):
+        dir_text = 'SE';
+        break;
+      case get_range(wind_dir, 161, 200):
+        dir_text = 'S';
+        break;
+      case get_range(wind_dir, 201, 250):
+        dir_text = 'SW';
+        break;
+      case get_range(wind_dir, 251, 290):
+        dir_text = 'W';
+        break;
+      case get_range(wind_dir, 291, 340):
+        dir_text = 'NW';
+        break;
+      case get_range(wind_dir, 341, 360):
+        dir_text = 'N';
+        break;
     }
 
     if(dir_text.length > 1){ // jeśli długość tekstu jest większa niż 1 znak, to przesuń w lewo żeby nadal był na środku
