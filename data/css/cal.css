@@ -1,0 +1,29 @@
+.fc-button-primary{
+    background-color: #B20D3B !important;
+    border: none !important;
+}
+
+.fc-mynext-button{
+    background-color: #8d8f91 !important;
+}
+
+.fc-today-button{
+    background-color: #dc3545 !important;
+    border: none !important;
+}
+
+.fc-col-header-cell-cushion{
+    color: #B20D3B !important;
+    text-decoration: none !important;
+}
+
+.fc-daygrid-day-number{
+    color: #212529 !important;
+    text-decoration: none !important;
+}
+
+@media (max-width: 992px) {
+    .fc-toolbar-title{
+        font-size: 5vw !important;
+    }
+}

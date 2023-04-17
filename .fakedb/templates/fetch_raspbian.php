@@ -41,7 +41,7 @@
 <span class="ansi31"></span><span class="ansi1 ansi31">Theme</span>:<span class="ansi38-15"> <?= substr($file[9], 7); ?> </span>
 <span class="ansi31"></span><span class="ansi1 ansi31">Icons</span>:<span class="ansi38-15"> <?= substr($file[10], 7); ?> </span> 
 <span class="ansi31"></span><span class="ansi1 ansi31">Terminal</span>:<span class="ansi38-15"> <?= substr($file[11], 10); ?> </span>
-<span class="ansi31"></span><span class="ansi1 ansi31">Terminal Font</span>:<span class="ansi38-15"> <?= substr($file[12], 10); ?> </span>
+<span class="ansi31"></span><span class="ansi1 ansi31">Terminal Font</span>:<span class="ansi38-15"> <?= substr($file[12], 15); ?> </span>
 <span class="ansi31"></span><span class="ansi1 ansi31">CPU</span>:<span class="ansi38-15"> <?= substr($file[13], 5); ?> </span>
 <span class="ansi31"></span><span class="ansi1 ansi31">Memory</span>:<span class="ansi38-15"> <?= substr($file[14], 8); ?> </span>
 

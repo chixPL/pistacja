@@ -52,6 +52,14 @@ b{
     height: 100% !important;
 }
 
+.table tr a{
+    color: #B20D3B;
+    font-weight: 700;
+    text-decoration: none;
+
+}
+
+
 /* Tylko na telefonie */
 @media (max-width: 992px) { 
     .progress{
