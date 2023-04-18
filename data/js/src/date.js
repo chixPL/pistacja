@@ -1,7 +1,21 @@
 import { DateTime } from "../../lib/luxon/luxon.min.js";
+
 function changeStyle(color){
   const nextbtn = document.querySelector('.fc-mynext-button');
   nextbtn.setAttribute('style', 'background-color: '+color+' !important');
+}
+
+async function getSqlResults(url = "", date = "") {
+  var formData = new FormData();
+  formData.append('date', date);  
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: "date=" + date
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -46,6 +60,28 @@ document.addEventListener('DOMContentLoaded', function() {
       initialView: 'dayGridMonth',
       firstDay: 1,
       locale: 'pl',
+      dateClick: function(info) {
+        const title = document.querySelector('.modal-title');
+        const description = document.querySelector('.modal-body');
+        title.innerHTML = 'Data: ' + info.dateStr;
+        getSqlResults('.db/date_res.php', info.dateStr).then(data => {
+          description.innerHTML = '';
+          // console.log(info.dateStr + "|" + JSON.stringify(data));
+          if(data == null) {
+            description.innerHTML += '<p>Nie znaleziono danych dla tego dnia.</p>';
+          } else {
+          let res = JSON.parse(JSON.stringify(data));
+          // console.log(res); 
+          description.innerHTML += '<p class="result"><b>Temperatura:</b> ' + res['temperature'] + '°C</p>';
+          description.innerHTML += '<p class="result"><b>Prędkość wiatru:</b> ' + res['wind_speed_kmh'] + 'km/h</p>';
+          description.innerHTML += '<p class="result"><b>Ciśnienie:</b> ' + res['pressure'] + 'hPa</p>';
+          description.innerHTML += '<p class="result"><b>Opady:</b> ' + res['rain_count'] + 'mm</p>';
+          description.innerHTML += '<p class="result"><b>Wilgotność:</b> ' + res['humidity'] + '%</p>';;
+        }
+      });
+        const myModal = new bootstrap.Modal(document.getElementById('dateModal'));
+        myModal.show();
+      },
     });
     calendar.render();
   });

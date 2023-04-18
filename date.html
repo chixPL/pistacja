@@ -15,7 +15,7 @@
   <!-- Własne css i js -->
   <link rel="stylesheet" href="data/css/style.css">
   <link rel="stylesheet" href="data/css/cal.css">
-  <script src="data/js/src/date.js" type="module"></script>
+  <script src="data/js/min/date.min.js" type="module"></script>
   <title>Pistacja</title>
 </head>
 
@@ -63,6 +63,27 @@
         <div id="calendar"></div>
       </div>
     </div>
+  <!-- Informacje -->
+  <div class="modal fade" id="dateModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Data: </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="temperature" class="result"><b>Temperatura:</b></p>
+          <p id="wind_speed" class="result"><b>Wiatr:</b></p>
+          <p id="pressure" class="result"><b>Ciśnienie:</b></p>
+          <p id="rain" class="result"><b>Deszcz:</b></p>
+          <p id="humidity" class="result"><b>Wilgotność:</b></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </body>
 
