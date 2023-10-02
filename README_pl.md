@@ -26,16 +26,21 @@ Luźno oparte na [tej instrukcji](https://projects.raspberrypi.org/en/projects/b
 ### Instalacja
 1. Zbuduj stację pogodową zgodnie z poniższym schematem:
 [TBD]
-2. Sklonuj to repozytorium na swoim Raspberry Pi
-3. Zainstaluj wymagane pakiety Pythona: `pip3 install -r requirements.txt`
-4. Ustaw konfigurację bazy danych w .db, aby wskazywała na zewnętrzny serwer
-5. Uruchom serwer: `python3 main.py`
-6. Wklej katalog frontend do katalogu głównego serwera WWW i ustaw db_connect.php tak, aby wskazywał na ten sam serwer.
-7. Otwórz stronę w przeglądarce i gotowe!
+2. Sklonuj to repozytorium na swoje Raspberry Pi
+3. Wejdź w konfigurację `raspi-config` i włącz I2C i SPI. Zrestartuj Raspberry Pi.
+4. Zainstaluj wymagane pakiety Pythona: `pip3 install -r requirements.txt`
+5. Ustaw konfigurację bazy danych w .db, aby wskazywała na zewnętrzny serwer
+6. Uruchom serwer: `python3 main.py`
+7. Wklej katalog frontend do katalogu głównego serwera WWW i ustaw db_connect.php tak, aby wskazywał na ten sam serwer.
+8. Otwórz stronę w przeglądarce i gotowe!
 
 ### Zrzuty ekranu
+## Backend
+[TBD]
+## Frontend
 [TBD]
 
 ### Licencja
 Ten projekt jest objęty licencją GPLv3 - szczegóły w pliku LICENSE.md.
+
 Autor: Jakub Rutkowski (x5px) 2023

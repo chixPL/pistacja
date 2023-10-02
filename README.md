@@ -31,15 +31,20 @@ Loosely based on [this guide](https://projects.raspberrypi.org/en/projects/build
 1. Build the weather station according to this schema:
 [TBD]
 2. Clone this repository to your Raspberry Pi
-3. Install the required Python packages: `pip3 install -r requirements.txt`
-4. Set the database config in .db to point to an external server
-5. Run the server: `python3 main.py`
-6. Paste the frontend directory to your web server's root directory and set db_connect.php to point to the same server
-7. Open the website in your browser and enjoy!
+3. Enable I2C and SPI in `raspi-config`. Reboot.
+4. Install the required Python packages: `pip3 install -r requirements.txt`
+5. Set the database config in .db to point to an external server
+6. Run the server: `python3 main.py`
+7. Paste the frontend directory to your web server's root directory and set db_connect.php to point to the same server
+8. Open the website in your browser and enjoy!
 
 ### Screenshots
+## Backend
+[TBD]
+## Frontend
 [TBD]
 
 ### License
-This project is licensed under the GPLv3 license - see the LICENSE.md file for details
+This project is licensed under the GPLv3 license - see the LICENSE.md file for details.
+
 Made by Jakub Rutkowski (x5px) 2023
