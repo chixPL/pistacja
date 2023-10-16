@@ -38,13 +38,18 @@ Loosely based on [this guide](https://projects.raspberrypi.org/en/projects/build
 7. Paste the frontend directory to your web server's root directory and set db_connect.php to point to the same server
 8. Open the website in your browser and enjoy!
 
+### Build schematic
+![schematic](./resources/schematic.png)
+
 ### Screenshots
 ## Backend
 [TBD]
 ## Frontend
 [TBD]
 
-### License
+### License and Credits
 This project is licensed under the GPLv3 license - see the LICENSE.md file for details.
+Thanks to the Raspberry Pi Foundation for the guide.
+Schematics made in Fritzing.
 
 Made by Jakub Rutkowski (x5px) 2023
