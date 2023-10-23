@@ -9,7 +9,7 @@
 
 *The name is a wordplay in Polish - Pi because it's built with Raspberry Pi and stacja (station). Together they make pistachio.*
 
-### Features
+## Features
 * Current weather conditions (temperature, wind speed anddirection, humidity, pressure, etc.)
 * History of the weather at given dates
 * Statistical data - charts and graphs for the weather this week and this month
@@ -17,7 +17,7 @@
 
 Loosely based on [this guide](https://projects.raspberrypi.org/en/projects/build-your-own-weather-station/0), however due to hardware differences I wrote a lot of the code myself.
 
-### Requirements
+## Requirements
 * Raspberry Pi (tested on Model 3 B V1.2). Internet connection required.
 * Latest version of Raspbian with Python 3.7+ installed
 * MCP3008 ADC converter
@@ -27,9 +27,8 @@ Loosely based on [this guide](https://projects.raspberrypi.org/en/projects/build
 * Temperature and humidity sensor (built with Aosong AM2301)
 * 4.7kΩ resistor
 
-### Installation
-1. Build the weather station according to this schema:
-[TBD]
+## Installation
+1. Build the weather station according to the schema below.
 2. Clone this repository to your Raspberry Pi
 3. Enable I2C and SPI in `raspi-config`. Reboot.
 4. Install the required Python packages: `pip3 install -r requirements.txt`
@@ -41,13 +40,18 @@ Loosely based on [this guide](https://projects.raspberrypi.org/en/projects/build
 ### Build schematic
 ![schematic](./resources/schematic.png)
 
-### Screenshots
-## Backend
-[TBD]
-## Frontend
+## Screenshots
+### Build
 [TBD]
 
-### License and Credits
+### Backend
+![database](./resources/database.png)
+![results](./resources/results.png)
+
+### Frontend
+![website](./resources/website.png)
+
+## License and Credits
 This project is licensed under the GPLv3 license - see the LICENSE.md file for details.
 Thanks to the Raspberry Pi Foundation for the guide.
 Schematics made in Fritzing.
