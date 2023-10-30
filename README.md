@@ -42,6 +42,10 @@ Loosely based on [this guide](https://projects.raspberrypi.org/en/projects/build
 
 ## Screenshots
 ### Build
+#### Without case
+![build-nocase](./resources/build.jpg)
+When properly laid out, the case dimensions would be around 17x15x7cm. I left enough wiggle room to account for longer wires and/or nonstandard peripherals
+#### With case
 [TBD]
 
 ### Backend
