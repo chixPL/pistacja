@@ -2,7 +2,7 @@
 ## Internetowa stacja pogodowa zbudowana przy użyciu Raspberry Pi i Pythona.
 
 <p align="center">
-    <img src="/frontend/data/images/pistacja-logo.svg" alt="pistacja-logo" width="256px" height="256px">
+    <img src="/Frontend/data/images/pistacja-logo.svg" alt="pistacja-logo" width="256px" height="256px">
 </p>
 
 ## Funkcje

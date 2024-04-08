@@ -2,7 +2,7 @@
 ## A web-based weather station built with Raspberry Pi and Python.
 
 <p align="center">
-    <img src="/frontend/data/images/pistacja-logo.svg" alt="pistacja-logo" width="256px" height="256px">
+    <img src="/Frontend/data/images/pistacja-logo.svg" alt="pistacja-logo" width="256px" height="256px">
 </p>
 
 🇵🇱 Wersja po polsku jest dostepna [tutaj](../master/README_pl.md).
