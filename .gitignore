@@ -1,3 +1,6 @@
-.db/
+Frontend/.db/sqlconnect.php
+Backend/Baza/database.ini
+Backend/Baza/login.txt
 .htaccess
 composer.*
+Backend/Test/*
